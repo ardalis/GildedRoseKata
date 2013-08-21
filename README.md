@@ -1,0 +1,4 @@
+GildedRoseKata
+==============
+
+GildedRoseKata
