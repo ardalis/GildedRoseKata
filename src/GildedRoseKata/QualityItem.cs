@@ -52,6 +52,22 @@ namespace GildedRoseKata
             }
         }
 
+        protected void IncrementQuality()
+        {
+            if (Quality < 50)
+            {
+                Quality = Quality + 1;
+            }
+        }
+
+        protected void DecrementQuality(int amount = 1)
+        {
+            if (Quality > 0)
+            {
+                Quality = Quality - amount;
+            }
+        }
+
         public virtual void UpdateQuality()
         {
             if (this.Name != "Aged Brie" && this.Name != "Backstage passes to a TAFKAL80ETC concert")

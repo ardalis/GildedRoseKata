@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgedBrieQualityItem.cs" />
+    <Compile Include="BackstagePassQualityItem.cs" />
     <Compile Include="GildedRose.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="NormalQualityItem.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="QualityItem.cs" />
     <Compile Include="SulfurasQualityItem.cs" />
     <Compile Include="Tests\AgedBrieQualityItemUpdateQualityShould.cs" />
+    <Compile Include="Tests\BackstagePassQualityItemUpdateQualityShould.cs" />
     <Compile Include="Tests\SulfurasQualityItemUpdateQualityShould.cs" />
     <Compile Include="Tests\NormalQualityItemUpdateQualityShould.cs" />
     <Compile Include="Tests\GildedRoseUpdateQualityShould.cs" />

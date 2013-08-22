@@ -11,7 +11,7 @@ namespace GildedRoseKata
         {
             if (this.Quality < 50)
             {
-                this.Quality = this.Quality + 1;
+                IncrementQuality();
             }
 
             this.SellIn = this.SellIn - 1;
