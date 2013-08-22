@@ -84,6 +84,50 @@ namespace GildedRoseKata.Tests
             resultItem.SellIn.Should().Be(0);
         }
 
+        [Test]
+        public void IncreaseQualityByOneOfBackstagePassesWithSellInOfEleven()
+        {
+            var item = GetBackstagePasses(sellIn: 11);
+
+            var resultItem = UpdateQualityForItem(item);
+
+            resultItem.Quality.Should().Be(DefaultQuality+1);
+            resultItem.SellIn.Should().Be(10);
+        }
+
+        [Test]
+        public void IncreaseQualityByTwoOfBackstagePassesWithSellInOfTen()
+        {
+            var item = GetBackstagePasses();
+
+            var resultItem = UpdateQualityForItem(item);
+
+            resultItem.Quality.Should().Be(DefaultQuality + 2);
+            resultItem.SellIn.Should().Be(DefaultSellIn - 1);
+        }
+
+        [Test]
+        public void IncreaseQualityByThreeOfBackstagePassesWithSellInOfFive()
+        {
+            var item = GetBackstagePasses(sellIn: 5);
+
+            var resultItem = UpdateQualityForItem(item);
+
+            resultItem.Quality.Should().Be(DefaultQuality + 3);
+            resultItem.SellIn.Should().Be(4);
+        }
+
+        [Test]
+        public void SetQualityToZeroForBackstagePassesWithSellInOfZero()
+        {
+            var item = GetBackstagePasses(sellIn: 0);
+
+            var resultItem = UpdateQualityForItem(item);
+
+            resultItem.Quality.Should().Be(0);
+            resultItem.SellIn.Should().Be(-1);
+        }
+
         private Item GetNormalItem(int sellIn = DefaultSellIn, int quality = DefaultQuality)
         {
             return new Item { Name = "+5 Dexterity Vest", SellIn = sellIn, Quality = quality };
@@ -97,6 +141,11 @@ namespace GildedRoseKata.Tests
         private Item GetSulfuras(int sellIn = 0)
         {
             return new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = sellIn, Quality = 80 };
+        }
+
+        private Item GetBackstagePasses(int sellIn = DefaultSellIn, int quality = DefaultQuality)
+        {
+            return new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellIn, Quality = quality };
         }
 
         private Item UpdateQualityForItem(Item item)
