@@ -1,6 +1,24 @@
 namespace GildedRoseKata
 {
-    class QualityItem
+    class NormalQualityItem : QualityItem
+    {
+        public override void UpdateQuality()
+        {
+            if (this.Quality > 0)
+            {
+                this.Quality = this.Quality - 1;
+            }
+
+            this.SellIn = this.SellIn - 1;
+
+            if (this.SellIn < 0)
+            {
+                this.Quality = this.Quality - 1;
+            }
+        }
+    }
+
+    abstract class QualityItem
     {
         private readonly Item _item;
 
@@ -45,7 +63,7 @@ namespace GildedRoseKata
             }
         }
 
-        public void UpdateQuality()
+        public virtual void UpdateQuality()
         {
             if (this.Name != "Aged Brie" && this.Name != "Backstage passes to a TAFKAL80ETC concert")
             {
