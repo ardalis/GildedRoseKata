@@ -53,5 +53,20 @@ namespace GildedRoseKata.Tests
             firstItem.Quality.Should().Be(18);
             firstItem.SellIn.Should().Be(-1);
         }
+
+        [Test]
+        public void IncreaseQualityOfAgedBrieByOne()
+        {
+            var items = new List<Item>();
+            items.Add(new Item { Name = "Aged Brie", SellIn = 2, Quality = 20 });
+
+            var gildedrose = new GildedRose(items);
+            gildedrose.UpdateQuality();
+
+            var firstItem = items.First();
+
+            firstItem.Quality.Should().Be(21);
+            firstItem.SellIn.Should().Be(1);
+        }
     }
 }
