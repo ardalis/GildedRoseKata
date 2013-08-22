@@ -60,9 +60,9 @@
     <Compile Include="SulfurasQualityItem.cs" />
     <Compile Include="Tests\AgedBrieQualityItemUpdateQualityShould.cs" />
     <Compile Include="Tests\BackstagePassQualityItemUpdateQualityShould.cs" />
+    <Compile Include="Tests\QualityItemCreateFromItemShould.cs" />
     <Compile Include="Tests\SulfurasQualityItemUpdateQualityShould.cs" />
     <Compile Include="Tests\NormalQualityItemUpdateQualityShould.cs" />
-    <Compile Include="Tests\GildedRoseUpdateQualityShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
