@@ -9,79 +9,88 @@ namespace GildedRoseKata.Tests
     [TestFixture]
     public class GildedRoseUpdateQualityShould
     {
+        private const int DefaultSellIn = 10;
+        private const int DefaultQuality = 20;
+        private List<Item> _items;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _items = new List<Item>();
+        }
         [Test]
         public void ReduceQualityOfANormalItemByOneIfSellInIs10()
         {
-            var items = new List<Item>();
-            items.Add(new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 });
+            var item = GetNormalItem();
 
-            var gildedrose = new GildedRose(items);
-            gildedrose.UpdateQuality();
+            var resultItem = UpdateQualityForItem(item);
 
-            var firstItem = items.First();
-
-            firstItem.Quality.Should().Be(19);
-            firstItem.SellIn.Should().Be(9);
+            resultItem.Quality.Should().Be(DefaultQuality - 1);
+            resultItem.SellIn.Should().Be(DefaultSellIn - 1);
         }
 
         [Test]
         public void NotReduceQualityOfANormalItemBelowZero()
         {
-            var items = new List<Item>();
-            items.Add(new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 0 });
+            var item = GetNormalItem(quality: 0);
 
-            var gildedrose = new GildedRose(items);
-            gildedrose.UpdateQuality();
+            var resultItem = UpdateQualityForItem(item);
 
-            var firstItem = items.First();
-
-            firstItem.Quality.Should().Be(0);
-            firstItem.SellIn.Should().Be(9);
+            resultItem.Quality.Should().Be(0);
+            resultItem.SellIn.Should().Be(DefaultSellIn - 1);
         }
 
         [Test]
         public void ReduceQualityOfANormalItemByTwoIfSellInIsZero()
         {
-            var items = new List<Item>();
-            items.Add(new Item { Name = "+5 Dexterity Vest", SellIn = 0, Quality = 20 });
+            var item = GetNormalItem(sellIn: 0);
 
-            var gildedrose = new GildedRose(items);
-            gildedrose.UpdateQuality();
+            var resultItem = UpdateQualityForItem(item);
 
-            var firstItem = items.First();
-
-            firstItem.Quality.Should().Be(18);
-            firstItem.SellIn.Should().Be(-1);
+            resultItem.Quality.Should().Be(DefaultQuality - 2);
+            resultItem.SellIn.Should().Be(-1);
         }
 
         [Test]
         public void IncreaseQualityOfAgedBrieByOne()
         {
-            var items = new List<Item>();
-            items.Add(new Item { Name = "Aged Brie", SellIn = 2, Quality = 20 });
+            var item = GetAgedBrie();
 
-            var gildedrose = new GildedRose(items);
-            gildedrose.UpdateQuality();
+            var resultItem = UpdateQualityForItem(item);
 
-            var firstItem = items.First();
-
-            firstItem.Quality.Should().Be(21);
-            firstItem.SellIn.Should().Be(1);
+            resultItem.Quality.Should().Be(DefaultQuality + 1);
+            resultItem.SellIn.Should().Be(DefaultSellIn - 1);
         }
 
         [Test]
         public void NotIncreaseQualityOfAgedBrieBeyondFifty()
         {
-            var items = new List<Item>();
-            items.Add(new Item { Name = "Aged Brie", SellIn = 2, Quality = 50 });
+            var item = GetAgedBrie(quality: 50);
 
+            var resultItem = UpdateQualityForItem(item);
+
+            resultItem.Quality.Should().Be(50);
+            resultItem.SellIn.Should().Be(DefaultSellIn - 1);
+        }
+
+        private Item GetNormalItem(int sellIn = DefaultSellIn, int quality = DefaultQuality)
+        {
+            return new Item { Name = "+5 Dexterity Vest", SellIn = sellIn, Quality = quality };
+        }
+
+        private Item GetAgedBrie(int sellIn = DefaultSellIn, int quality = DefaultQuality)
+        {
+            return new Item { Name = "Aged Brie", SellIn = sellIn, Quality = quality };
+        }
+
+        private Item UpdateQualityForItem(Item item)
+        {
+            var items = new List<Item>();
+            items.Add(item);
             var gildedrose = new GildedRose(items);
             gildedrose.UpdateQuality();
 
-            var firstItem = items.First();
-
-            firstItem.Quality.Should().Be(50);
-            firstItem.SellIn.Should().Be(1);
+            return items.First();
         }
     }
 }
