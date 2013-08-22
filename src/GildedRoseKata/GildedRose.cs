@@ -15,7 +15,7 @@ namespace GildedRoseKata
         {
             foreach (var item in Items)
             {
-                var qualityItem = new QualityItem(item);
+                var qualityItem = QualityItem.CreateFromItem(item);
                 qualityItem.UpdateQuality();
             }
         }

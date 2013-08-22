@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="GildedRose.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="NormalQualityItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QualityItem.cs" />

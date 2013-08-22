@@ -28,10 +28,10 @@ namespace GildedRoseKata.Tests
         {
             var item = GetNormalItem(quality: 0);
 
-            var resultItem = UpdateQualityForItem(item);
+            item.UpdateQuality();
 
-            resultItem.Quality.Should().Be(0);
-            resultItem.SellIn.Should().Be(DefaultSellIn - 1);
+            item.Quality.Should().Be(0);
+            item.SellIn.Should().Be(DefaultSellIn - 1);
         }
 
         [Test]
@@ -39,15 +39,15 @@ namespace GildedRoseKata.Tests
         {
             var item = GetNormalItem(sellIn: 0);
 
-            var resultItem = UpdateQualityForItem(item);
+            item.UpdateQuality();
 
-            resultItem.Quality.Should().Be(DefaultQuality - 2);
-            resultItem.SellIn.Should().Be(-1);
+            item.Quality.Should().Be(DefaultQuality - 2);
+            item.SellIn.Should().Be(-1);
         }
 
-        private Item GetNormalItem(int sellIn = DefaultSellIn, int quality = DefaultQuality)
+        private QualityItem GetNormalItem(int sellIn = DefaultSellIn, int quality = DefaultQuality)
         {
-            return new NormalQualityItem { Name = "+5 Dexterity Vest", SellIn = sellIn, Quality = quality };
+            return new NormalQualityItem(new Item() { Name = "+5 Dexterity Vest", SellIn = sellIn, Quality = quality });
         }
 
         private Item UpdateQualityForItem(Item item)

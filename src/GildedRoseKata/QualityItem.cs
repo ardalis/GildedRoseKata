@@ -1,23 +1,7 @@
+using System;
+
 namespace GildedRoseKata
 {
-    class NormalQualityItem : QualityItem
-    {
-        public override void UpdateQuality()
-        {
-            if (this.Quality > 0)
-            {
-                this.Quality = this.Quality - 1;
-            }
-
-            this.SellIn = this.SellIn - 1;
-
-            if (this.SellIn < 0)
-            {
-                this.Quality = this.Quality - 1;
-            }
-        }
-    }
-
     abstract class QualityItem
     {
         private readonly Item _item;
@@ -25,6 +9,11 @@ namespace GildedRoseKata
         public QualityItem(Item item)
         {
             this._item = item;
+        }
+
+        public static QualityItem CreateFromItem(Item item)
+        {
+            return new NormalQualityItem(item);
         }
 
         public string Name
