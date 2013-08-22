@@ -38,5 +38,20 @@ namespace GildedRoseKata.Tests
             firstItem.Quality.Should().Be(0);
             firstItem.SellIn.Should().Be(9);
         }
+
+        [Test]
+        public void ReduceQualityOfANormalItemByTwoIfSellInIsZero()
+        {
+            var items = new List<Item>();
+            items.Add(new Item { Name = "+5 Dexterity Vest", SellIn = 0, Quality = 20 });
+
+            var gildedrose = new GildedRose(items);
+            gildedrose.UpdateQuality();
+
+            var firstItem = items.First();
+
+            firstItem.Quality.Should().Be(18);
+            firstItem.SellIn.Should().Be(-1);
+        }
     }
 }
