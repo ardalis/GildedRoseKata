@@ -46,7 +46,7 @@ namespace GildedRoseKata
             {
                 return _item.Quality;
             }
-            set
+            private set
             {
                 _item.Quality = value;
             }

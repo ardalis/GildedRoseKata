@@ -44,6 +44,17 @@ namespace GildedRoseKata.Tests
             item.SellIn.Should().Be(-1);
         }
 
+        [Test]
+        public void ReduceQualityOfANormalItemByOneIfStartsAt1IfSellInIsZero()
+        {
+            var item = GetNormalItem(quality: 1, sellIn: 0);
+
+            item.UpdateQuality();
+
+            item.Quality.Should().Be(0);
+            item.SellIn.Should().Be(-1);
+        }
+
         private QualityItem GetNormalItem(int sellIn = DefaultSellIn, int quality = DefaultQuality)
         {
             return new NormalQualityItem(new Item() { Name = "+5 Dexterity Vest", SellIn = sellIn, Quality = quality });
