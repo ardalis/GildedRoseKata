@@ -2,7 +2,8 @@ namespace GildedRoseKata
 {
     class AgedBrieQualityItem : QualityItem
     {
-        public AgedBrieQualityItem(Item item) : base(item)
+        public AgedBrieQualityItem(Item item)
+            : base(item)
         {
         }
 
