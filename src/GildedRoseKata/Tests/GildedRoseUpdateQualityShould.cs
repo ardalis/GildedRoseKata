@@ -73,6 +73,17 @@ namespace GildedRoseKata.Tests
             resultItem.SellIn.Should().Be(DefaultSellIn - 1);
         }
 
+        [Test]
+        public void NotChangeQualityOrSellInOfSulfuras()
+        {
+            var item = GetSulfuras();
+
+            var resultItem = UpdateQualityForItem(item);
+
+            resultItem.Quality.Should().Be(80);
+            resultItem.SellIn.Should().Be(0);
+        }
+
         private Item GetNormalItem(int sellIn = DefaultSellIn, int quality = DefaultQuality)
         {
             return new Item { Name = "+5 Dexterity Vest", SellIn = sellIn, Quality = quality };
@@ -81,6 +92,11 @@ namespace GildedRoseKata.Tests
         private Item GetAgedBrie(int sellIn = DefaultSellIn, int quality = DefaultQuality)
         {
             return new Item { Name = "Aged Brie", SellIn = sellIn, Quality = quality };
+        }
+
+        private Item GetSulfuras(int sellIn = 0)
+        {
+            return new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = sellIn, Quality = 80 };
         }
 
         private Item UpdateQualityForItem(Item item)
