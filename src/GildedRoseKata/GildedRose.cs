@@ -2,6 +2,50 @@ using System.Collections.Generic;
 
 namespace GildedRoseKata
 {
+    class QualityItem
+    {
+        private readonly Item _item;
+
+        public QualityItem(Item item)
+        {
+            this._item = item;
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _item.Name;
+            }
+            set
+            {
+                _item.Name = value;
+            }
+        }
+        public int Quality
+        {
+            get
+            {
+                return _item.Quality;
+            }
+            set
+            {
+                _item.Quality = value;
+            }
+        }
+        public int SellIn
+        {
+            get
+            {
+                return _item.SellIn;
+            }
+            set
+            {
+                _item.SellIn = value;
+            }
+        }
+
+    }
     class GildedRose
     {
         IList<Item> Items;
@@ -15,11 +59,11 @@ namespace GildedRoseKata
         {
             foreach (var item in Items)
             {
-                UpdateQuality(item);
+                UpdateQuality(new QualityItem(item));
             }
         }
 
-        public void UpdateQuality(Item item)
+        public void UpdateQuality(QualityItem item)
         {
             if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
             {
