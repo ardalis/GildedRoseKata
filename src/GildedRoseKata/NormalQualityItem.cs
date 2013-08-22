@@ -2,7 +2,8 @@ namespace GildedRoseKata
 {
     class NormalQualityItem : QualityItem
     {
-        public NormalQualityItem(Item item) : base(item)
+        public NormalQualityItem(Item item)
+            : base(item)
         {
         }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using FluentAssertions;
@@ -48,16 +47,6 @@ namespace GildedRoseKata.Tests
         private QualityItem GetNormalItem(int sellIn = DefaultSellIn, int quality = DefaultQuality)
         {
             return new NormalQualityItem(new Item() { Name = "+5 Dexterity Vest", SellIn = sellIn, Quality = quality });
-        }
-
-        private Item UpdateQualityForItem(Item item)
-        {
-            var items = new List<Item>();
-            items.Add(item);
-            var gildedrose = new GildedRose(items);
-            gildedrose.UpdateQuality();
-
-            return items.First();
         }
     }
 }
