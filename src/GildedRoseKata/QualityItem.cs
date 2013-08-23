@@ -25,6 +25,10 @@ namespace GildedRoseKata
             {
                 return new BackstagePassQualityItem(item);
             }
+            if (item.Name == "Conjured Mana Cake")
+            {
+                return new ConjuredQualityItem(item);
+            }
             return new NormalQualityItem(item);
         }
 

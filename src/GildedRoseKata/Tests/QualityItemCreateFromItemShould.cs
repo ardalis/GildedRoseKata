@@ -39,5 +39,13 @@ namespace GildedRoseKata.Tests
 
             item.Should().BeOfType<BackstagePassQualityItem>();
         }
+
+        [Test]
+        public void ReturnConjuredQualityItemGivenConjuredItem()
+        {
+            var item = QualityItem.CreateFromItem(new Item() { Name = "Conjured Mana Cake" });
+
+            item.Should().BeOfType<ConjuredQualityItem>();
+        }
     }
 }
