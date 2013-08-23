@@ -76,11 +76,19 @@ namespace GildedRoseKata
             }
         }
 
-        protected void DecrementQuality(int amount = 1)
+        protected void DecrementQuality()
         {
             if (Quality > 0)
             {
-                Quality = Quality - amount;
+                Quality = Quality - 1;
+            }
+        }
+
+        protected void DecrementQuality(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                DecrementQuality();
             }
         }
 

@@ -24,7 +24,7 @@ namespace GildedRoseKata
             }
             if (this.SellIn < 0)
             {
-                DecrementQuality(amount:Quality);
+                DecrementQuality(Quality);
             }
         }
     }
