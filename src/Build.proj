@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectName>GildedRoseKata</ProjectName>
+  </PropertyGroup>
+  <Target Name="DebugBuild">
+    <Message Text="Building $(ProjectName)" />
+    <MSBuild Projects="$(ProjectName).sln" Targets="Clean" Properties="Configuration=Debug" />
+    <MSBuild Projects="$(ProjectName).sln" Targets="Build" Properties="Configuration=Debug" />
+  </Target>
+  <Target Name="UnitTests" DependsOnTargets="DebugBuild">
+    <Message Text="Running $(ProjectName) Core Tests" />
+    <Exec Command="..\lib\nunit\nunit-console.exe &quot;$(ProjectName)\bin\debug\$(ProjectName).exe&quot;"/>
+  </Target>
+</Project>
